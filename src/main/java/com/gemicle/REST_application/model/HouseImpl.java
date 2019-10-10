@@ -25,40 +25,62 @@ public class HouseImpl implements House, Serializable {
         return address;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAddress(String address) throws IllegalAccessException {
+        if(!(address == null || address.equals("")))
+            this.address = address;
+
+        throw new IllegalAccessException("address not correct");
     }
 
     public int getNumberEntrances() {
         return numberEntrances;
     }
 
-    public void setNumberEntrances(int numberEntrances) {
-        this.numberEntrances = numberEntrances;
+    public void setNumberEntrances(int numberEntrances) throws IllegalAccessException {
+        if(isCorrectNumber(numberEntrances))
+            this.numberEntrances = numberEntrances;
+
+        new IllegalAccessException("numberEntrances not correct");
     }
 
     public int getNumberApartments() {
         return numberApartments;
     }
 
-    public void setNumberApartments(int numberApartments) {
-        this.numberApartments = numberApartments;
+    public void setNumberApartments(int numberApartments) throws IllegalAccessException {
+        if(isCorrectNumber(numberApartments))
+            this.numberApartments = numberApartments;
+
+        new IllegalAccessException("numberApartments not correct");
     }
 
     public int getNumberFloors() {
         return numberFloors;
     }
 
-    public void setNumberFloors(int numberFloors) {
-        this.numberFloors = numberFloors;
+    public void setNumberFloors(int numberFloors) throws IllegalAccessException {
+        if(isCorrectNumber(numberFloors))
+            this.numberFloors = numberFloors;
+
+        new IllegalAccessException("numberFloors not correct");
     }
 
     public int getYearConstruction() {
         return yearConstruction;
     }
 
-    public void setYearConstruction(int yearConstruction) {
-        this.yearConstruction = yearConstruction;
+    public void setYearConstruction(int yearConstruction) throws IllegalAccessException {
+        if(isCorrectNumber(yearConstruction))
+            this.yearConstruction = yearConstruction;
+
+        new IllegalAccessException("yearConstruction not correct");
+    }
+
+    private boolean isCorrectNumber(int number){
+        if(number > 0)
+            return true;
+
+        return false;
     }
 
     @Override
