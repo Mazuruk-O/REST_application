@@ -9,6 +9,7 @@ import java.util.List;
 public class HouseServicesImpl implements HouseServices {
     private List<House> houses = new LinkedList<>();
 
+    public HouseServicesImpl()
     {
         houses.add(new HouseImpl("Soborna 52",5,6,7,1998));
         houses.add(new HouseImpl("Chornovola 88",10,10,9,2012));
