@@ -1,6 +1,7 @@
 package com.gemicle.REST_application.controller;
 
 import com.gemicle.REST_application.model.House;
+import com.gemicle.REST_application.model.HouseImpl;
 import com.gemicle.REST_application.services.HouseServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -9,13 +10,8 @@ import java.util.List;
 
 @RestController
 public class HouseController {
-    private final HouseServices houseServices;
-
     @Autowired
-    public HouseController(HouseServices houseServices) {
-        System.out.println("contr HouseContr");
-        this.houseServices = houseServices;
-    }
+    private HouseServices houseServices;
 
     @GetMapping("/houses")
     List<House> allHouse(){
@@ -23,17 +19,36 @@ public class HouseController {
     }
 
     @PostMapping("/houses")
-    void newHouse(@RequestBody House house){
-        houseServices.save(house);
+    House newHouse(@RequestBody House house){
+        return houseServices.save(house);
     }
 
     @PutMapping("/employees/{address}")
-    void replaceHouse(@RequestBody House house){
-        houseServices.save(house);
+    House replaceHouse(@RequestBody House house){
+        try {
+
+            House forReplace = houseServices.findByAddress(house.getAddress());
+
+            return replaceHouseData(forReplace,house);
+
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        return new HouseImpl();
     }
 
     @DeleteMapping("/employees/{address}")
     void deleteEmployee(@RequestBody House house) {
         houseServices.delete(house);
+    }
+
+    private House replaceHouseData(House oldHouseData, House newHouseData) throws IllegalAccessException {
+        oldHouseData.setNumberApartments(newHouseData.getNumberApartments());
+        oldHouseData.setNumberEntrances(newHouseData.getNumberEntrances());
+        oldHouseData.setNumberFloors(newHouseData.getNumberFloors());
+        oldHouseData.setYearConstruction(newHouseData.getYearConstruction());
+
+        return oldHouseData;
     }
 }
