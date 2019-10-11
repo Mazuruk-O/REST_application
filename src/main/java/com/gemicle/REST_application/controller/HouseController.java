@@ -2,6 +2,7 @@ package com.gemicle.REST_application.controller;
 
 import com.gemicle.REST_application.model.House;
 import com.gemicle.REST_application.services.HouseServices;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,7 +11,9 @@ import java.util.List;
 public class HouseController {
     private final HouseServices houseServices;
 
+    @Autowired
     public HouseController(HouseServices houseServices) {
+        System.out.println("contr HouseContr");
         this.houseServices = houseServices;
     }
 
