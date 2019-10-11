@@ -2,10 +2,12 @@ package com.gemicle.REST_application.services;
 
 import com.gemicle.REST_application.model.House;
 import com.gemicle.REST_application.model.HouseImpl;
+import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
 
+@Service
 public class HouseServicesImpl implements HouseServices {
     private List<House> houses = new LinkedList<>();
 
@@ -17,9 +19,13 @@ public class HouseServicesImpl implements HouseServices {
     }
 
     @Override
-    public void save(House entity) {
-        if(!houses.contains(entity))
+    public House save(House entity) {
+        if(!houses.contains(entity)){
             houses.add(entity);
+            return entity;
+        }
+
+        throw new IllegalArgumentException("HouseServicesImpl.save(House house) - not correct argument!");
     }
 
     @Override
