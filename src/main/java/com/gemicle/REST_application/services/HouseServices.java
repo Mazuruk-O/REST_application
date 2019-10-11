@@ -5,7 +5,7 @@ import com.gemicle.REST_application.model.House;
 import java.util.List;
 
 public interface HouseServices {
-    void save(House entity);
+    House save(House entity);
 
     House findByYearConstruction(Long yearConstruction);
 
