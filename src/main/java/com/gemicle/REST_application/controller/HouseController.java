@@ -4,8 +4,10 @@ import com.gemicle.REST_application.model.House;
 import com.gemicle.REST_application.model.HouseImpl;
 import com.gemicle.REST_application.services.HouseServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.*;
 import java.util.List;
 
 @RestController
@@ -19,12 +21,12 @@ public class HouseController {
     }
 
     @PostMapping("/houses")
-    House newHouse(@RequestBody House house){
+    public House newHouse(@RequestBody HouseImpl house){
         return houseServices.save(house);
     }
 
-    @PutMapping("/employees/{address}")
-    House replaceHouse(@RequestBody House house){
+    @PutMapping("/houses/{address}")
+    House replaceHouse(@RequestBody HouseImpl house){
         try {
 
             House forReplace = houseServices.findByAddress(house.getAddress());
@@ -38,9 +40,9 @@ public class HouseController {
         return new HouseImpl();
     }
 
-    @DeleteMapping("/employees/{address}")
-    void deleteEmployee(@RequestBody House house) {
-        houseServices.delete(house);
+    @DeleteMapping("/houses/{address}")
+    void deleteEmployee(@PathVariable String address) {
+        houseServices.delete(address);
     }
 
     private House replaceHouseData(House oldHouseData, House newHouseData) throws IllegalAccessException {
