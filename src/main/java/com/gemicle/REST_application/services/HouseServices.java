@@ -13,5 +13,5 @@ public interface HouseServices {
 
     List<House> findAll();
 
-    void delete(House entity);
+    void delete(String address);
 }
