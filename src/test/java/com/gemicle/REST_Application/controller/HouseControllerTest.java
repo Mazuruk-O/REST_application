@@ -86,4 +86,15 @@ public class HouseControllerTest {
         CloseableHttpResponse response = client.execute(httpDelete);
         Assert.assertThat(response.getStatusLine().getStatusCode(), equalTo(HttpStatus.SC_OK));
     }
+
+    @Test
+    public void testDELETE_404() throws ClientProtocolException, IOException {
+        HttpDelete httpDelete = new HttpDelete("http://localhost:8080/houses/Kyivska900");
+
+        httpDelete.setHeader("Accept", "application/json");
+        httpDelete.setHeader("Content-type", "application/json");
+
+        CloseableHttpResponse response = client.execute(httpDelete);
+        Assert.assertThat(response.getStatusLine().getStatusCode(), equalTo(HttpStatus.NOT_FOUND));
+    }
 }
