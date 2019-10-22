@@ -20,7 +20,8 @@ import java.io.IOException;
 
 @RestController
 public class MultipartController {
-    private static ObjectMapper mapper = new ObjectMapper();
+    @Autowired
+    private ObjectMapper mapper;
     @Autowired
     private HouseServices houseServices;
 

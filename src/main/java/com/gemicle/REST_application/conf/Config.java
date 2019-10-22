@@ -1,5 +1,6 @@
 package com.gemicle.REST_application.conf;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gemicle.REST_application.filter.MultipartFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -18,5 +19,10 @@ public class Config {
         registrationBean.addUrlPatterns("/acceptImageAndDataHouse/*");
 
         return registrationBean;
+    }
+
+    @Bean
+    public ObjectMapper createOojectWrapper(){
+        return new ObjectMapper();
     }
 }
