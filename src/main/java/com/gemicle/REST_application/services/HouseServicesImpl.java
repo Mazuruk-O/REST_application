@@ -26,12 +26,8 @@ public class HouseServicesImpl implements HouseServices {
      */
     @Override
     public House save(House entity) {
-        if(!houses.contains(entity)){
             houses.add(entity);
             return entity;
-        }
-
-        throw new IllegalArgumentException("HouseServicesImpl.save(House house) - not correct argument!");
     }
 
     /**

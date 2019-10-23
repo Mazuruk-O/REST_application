@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
 public class HouseNotFound {
+
     @ResponseBody
     @ExceptionHandler(HouseException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
