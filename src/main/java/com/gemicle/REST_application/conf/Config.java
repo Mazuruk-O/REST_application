@@ -37,4 +37,14 @@ public class Config {
 
         return mapper;
     }
+  
+    @Bean(name = "multipartResolver")
+    public CommonsMultipartResolver multiPartResolver()
+    {
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+        multipartResolver.setMaxUploadSize(20848820);
+        return multipartResolver;
+    }
+
+
 }
