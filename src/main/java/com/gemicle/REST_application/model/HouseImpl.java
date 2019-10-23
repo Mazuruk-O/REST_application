@@ -1,8 +1,15 @@
 package com.gemicle.REST_application.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.gemicle.REST_application.conf.HouseDeserializer;
+import com.gemicle.REST_application.conf.HouseSerializer;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+@JsonDeserialize(using = HouseDeserializer.class)
+@JsonSerialize(using = HouseSerializer.class)
 public class HouseImpl implements House, Serializable {
     private String address;
     private int numberEntrances;

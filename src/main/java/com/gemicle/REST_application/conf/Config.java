@@ -26,13 +26,14 @@ public class Config {
     @Bean
     public ObjectMapper createOojectWrapper(){
         ObjectMapper mapper = new ObjectMapper();
-        SimpleModule module = new SimpleModule();
+
+        /*SimpleModule module = new SimpleModule();
 
         module.addDeserializer(HouseImpl.class, new HouseDeserializer()); // register custom Deserializer
 
         module.addSerializer(HouseImpl.class, new HouseSerializer()); // register custom Serializer
 
-        mapper.registerModule(module);
+        mapper.registerModule(module);*/
 
         return mapper;
     }

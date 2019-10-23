@@ -14,6 +14,8 @@ import java.io.IOException;
 public class HouseDeserializer extends JsonDeserializer<HouseImpl> {
     @Override
     public HouseImpl deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
+        System.out.println("\n == Costom deserialize == \n");
+
         ObjectCodec oc = jsonParser.getCodec();
         JsonNode node = oc.readTree(jsonParser);
 

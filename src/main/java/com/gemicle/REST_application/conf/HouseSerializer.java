@@ -10,6 +10,8 @@ import java.io.IOException;
 public class HouseSerializer extends JsonSerializer<HouseImpl> {
     @Override
     public void serialize(HouseImpl house, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
+        System.out.println("\n == custom serialize == \n");
+
         jsonGenerator.writeStartObject();
         jsonGenerator.writeStringField("address", house.getAddress());
         jsonGenerator.writeNumberField("numberEntrances", house.getNumberEntrances());

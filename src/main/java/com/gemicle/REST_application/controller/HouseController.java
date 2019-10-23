@@ -1,5 +1,6 @@
 package com.gemicle.REST_application.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gemicle.REST_application.model.House;
 import com.gemicle.REST_application.model.HouseImpl;
 import com.gemicle.REST_application.services.HouseServices;
@@ -14,6 +15,8 @@ import java.util.List;
 public class HouseController {
     @Autowired
     private HouseServices houseServices;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @GetMapping("/houses")
     List<House> allHouse(){
