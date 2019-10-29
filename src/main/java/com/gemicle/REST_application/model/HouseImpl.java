@@ -1,9 +1,22 @@
 package com.gemicle.REST_application.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.gemicle.REST_application.conf.HouseDeserializer;
+import com.gemicle.REST_application.conf.HouseSerializer;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+@JsonDeserialize(using = HouseDeserializer.class)
+@JsonSerialize(using = HouseSerializer.class)
+@Document("houses")
 public class HouseImpl implements House, Serializable {
+    @Id
+    private String id;
+
     private String address;
     private int numberEntrances;
     private int numberApartments;
@@ -11,6 +24,15 @@ public class HouseImpl implements House, Serializable {
     private int yearConstruction;
 
     public HouseImpl() {
+    }
+
+    public HouseImpl(String id, String address, int numberEntrances, int numberApartments, int numberFloors, int yearConstruction) {
+        this.id = id;
+        this.address = address;
+        this.numberEntrances = numberEntrances;
+        this.numberApartments = numberApartments;
+        this.numberFloors = numberFloors;
+        this.yearConstruction = yearConstruction;
     }
 
     public HouseImpl(String address, int numberEntrances, int numberApartments, int numberFloors, int yearConstruction) {
